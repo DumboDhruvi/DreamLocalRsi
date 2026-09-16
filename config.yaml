@@ -1,0 +1,22 @@
+agent:
+  command: mock
+  timeout_seconds: 600
+dreaming:
+  candidates: 16
+  enabled: true
+  min_improvement_margin: 0.001
+evaluator:
+  extra_args: -q
+  type: pytest
+exploration:
+  max_agent_calls: 40
+  max_rounds: 10
+  parallel_workers: 2
+  stop_when_score: 1.0
+replay:
+  beta1: 0.01
+  beta2: 0.01
+storage:
+  artifacts: .dream_rsi/artifacts
+  database: .dream_rsi/dream_rsi.sqlite
+  workspaces: .dream_rsi/workspaces
