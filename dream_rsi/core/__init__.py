@@ -1,4 +1,4 @@
-"""Core data models, tree structures, budget manager, and replay interfaces."""
+"""Core data models, tree structures, budget manager, replay, and orchestrator."""
 
 from dream_rsi.core.models import (
     NodeStatus,
@@ -11,6 +11,9 @@ from dream_rsi.core.models import (
 )
 from dream_rsi.core.tree import DiscoveryTree
 from dream_rsi.core.budget import BudgetManager
+from dream_rsi.core.policy import ExplorationPolicy, PolicyConfig
+from dream_rsi.core.replay import ReplaySimulator, ReplayObjectiveConfig
+from dream_rsi.core.orchestrator import Orchestrator
 
 __all__ = [
     "NodeStatus",
@@ -22,4 +25,9 @@ __all__ = [
     "ReplayResult",
     "DiscoveryTree",
     "BudgetManager",
+    "ExplorationPolicy",
+    "PolicyConfig",
+    "ReplaySimulator",
+    "ReplayObjectiveConfig",
+    "Orchestrator",
 ]
