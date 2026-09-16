@@ -1,0 +1,32 @@
+agent:
+  command: "mock" # options: "mock", "gemini", "claude", "codex", or a shell command
+  timeout_seconds: 600
+
+exploration:
+  max_rounds: 10
+  max_agent_calls: 40
+  parallel_workers: 2
+  branching_factor: 2
+  max_depth: 6
+  stop_when_score: 1.0
+
+dreaming:
+  enabled: true
+  candidates: 16
+  min_improvement_margin: 0.001
+
+replay:
+  beta1: 0.01
+  beta2: 0.01
+  quality_weight: 1.0
+  cost_weight: 0.0
+  parallelism_weight: 1.0
+
+evaluator:
+  type: "pytest" # options: "pytest", "command", "benchmark", "composite"
+  extra_args: "-q"
+
+storage:
+  database: ".dream_rsi/dream_rsi.sqlite"
+  artifacts: ".dream_rsi/artifacts"
+  workspaces: ".dream_rsi/workspaces"
