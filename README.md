@@ -181,7 +181,42 @@ Following conventional commits:
 
 ---
 
-## 7. Limitations & Future Extensions
+## 7. Model Context Protocol (MCP) Integration
 
-- **Model Replacement**: The system optimizes the *exploration policy* (branching, workers, depth, diversity), while keeping the underlying coding agent replaceable and non-fine-tuned.
-- **MCP Integration**: Designed as an optional integration layer on top of the existing CLI/library API.
+Dream-RSI is designed to run not only as a CLI tool and Python library, but also as an **MCP (Model Context Protocol) Server**, allowing AI assistants (Antigravity, Claude Desktop, Cursor, VS Code) to call the discovery harness directly.
+
+### Exposed MCP Tools
+
+| Tool Name | Description |
+| :--- | :--- |
+| `dream_rsi.start_task` | Launches online exploration on a target coding problem with automated sandboxing. |
+| `dream_rsi.get_tree` | Inspects the active discovery tree, branch hierarchy, and node scores. |
+| `dream_rsi.get_best_attempt` | Retrieves the highest-scoring attempt and the corresponding patch/diff. |
+| `dream_rsi.run_dreaming` | Triggers offline replay dreaming across historical discovery trees to evolve the exploration policy. |
+| `dream_rsi.benchmark` | Runs a comparative benchmark against baseline exploration strategies. |
+
+### Configuration Example (`mcp_config.json`)
+
+To enable Dream-RSI as an MCP server in your AI coding assistant:
+
+```json
+{
+  "mcpServers": {
+    "dream-rsi": {
+      "command": "python3",
+      "args": ["-m", "dream_rsi.cli", "mcp"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}
+```
+
+---
+
+## 8. Limitations & Scope
+
+- **Model Replacement**: The system optimizes the *exploration policy* (branching, depth, worker allocation, diversity, stopping), while keeping the underlying coding model replaceable and non-fine-tuned.
+- **Deterministic Replay**: The replay simulator uses empirical histories; novel unseen branches during offline dreaming evaluate through recorded tree trajectories.
+
