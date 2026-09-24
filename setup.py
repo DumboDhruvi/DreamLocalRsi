@@ -11,6 +11,7 @@ setup(
     entry_points={
         "console_scripts": [
             "dream-rsi = dream_rsi.cli:main",
+            "dream-rsi-mcp = dream_rsi.mcp_server:main",
         ],
     },
 )

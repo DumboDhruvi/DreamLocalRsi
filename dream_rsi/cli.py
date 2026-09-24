@@ -351,5 +351,13 @@ def export(output: str, config: str):
     click.echo(f"Exported {len(trees)} discovery tree(s) to {output}")
 
 
+@main.command()
+@click.option("--config", "-c", default="config.yaml", help="Configuration file path.")
+def mcp(config: str):
+    """Start Dream-RSI MCP (Model Context Protocol) STDIO server."""
+    from dream_rsi.mcp_server import run_stdio_server
+    run_stdio_server(config_path=config)
+
+
 if __name__ == "__main__":
     main()
